@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="fort-graphics-logo-no-background.png" type="image/png">
+    <title>Fort Graphics & Fort Developers - Master Service Agreement & Terms and Conditions</title>     
+    <style>
+        /* General Page Styling */
+        :root {-fort-blue-light: #0288d1}
+
+        body { 
+            font-family: Arial, Helvetica, sans-serif; 
+            line-height: 1.7; 
+            color: #2d3748; 
+            padding: 40px 20px; 
+            background-color: #f4f7f6; 
+            max-width: 900px; 
+            margin: 0 auto; 
+        }
+
+        /* Container Styling */
+        .legal-box { 
+            background: #ffffff; 
+            padding: 40px; 
+            border-radius: 8px; 
+            border: 1px solid #cbd5e0; 
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); 
+        }
+
+        /* Typography */
+        h1 { 
+            color: #003366; 
+            font-size: 2rem; 
+            margin-bottom: 10px; 
+            line-height: 1.3;
+        }
+
+        h2 { 
+            color: #003366; 
+            font-size: 1.4rem; 
+            margin-top: 30px; 
+            margin-bottom: 15px;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 8px;
+        }
+
+        h3 { 
+            color: #0288d1; 
+            font-size: 1.15rem; 
+            margin-top: 20px;
+        }
+
+        p, li { 
+            font-size: 1rem; 
+            color: #4a5568; 
+            margin-bottom: 15px; 
+        }
+
+        ul {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        /* Highlight & Alert Styling */
+        .highlight-clause {
+            background-color: #ebf8ff;
+            border-left: 4px solid #0288d1;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        /* Back Button Styling */
+        .back-btn { 
+            display: inline-block; 
+            background-color: #0288d1; 
+            color: white; 
+            padding: 12px 24px; 
+            text-decoration: none; 
+            border-radius: 4px; 
+            font-weight: bold; 
+            margin-bottom: 25px; 
+            transition: background-color 0.2s ease-in-out;
+        }
+
+        .back-btn:hover {
+            background-color: #01579b;
+        }
+
+        /* Sub-meta Info */
+        .meta-info {
+            font-size: 0.9rem;
+            color: #718096;
+            margin-bottom: 20px;
+        }
+
+        /* =========================================================
+           RESPONSIVE MEDIA QUERIES FOR SMALLER SCREENS
+           ========================================================= */
+        @media screen and (max-width: 768px) {
+            body {
+                padding: 20px 10px;
+            }
+
+            .legal-box {
+                padding: 25px 15px;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            h2 {
+                font-size: 1.2rem;
+            }
+
+            h3 {
+                font-size: 1.05rem;
+            }
+
+            p, li {
+                font-size: 0.92rem;
+                line-height: 1.5;
+            }
+
+            .back-btn {
+                padding: 10px 18px;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            body {
+                padding: 10px 5px;
+            }
+
+            .legal-box {
+                padding: 18px 12px;
+                border-radius: 4px;
+            }
+
+            h1 {
+                font-size: 1.25rem;
+            }
+
+            h2 {
+                font-size: 1.05rem;
+            }
+
+            h3 {
+                font-size: 0.95rem;
+            }
+
+            p, li {
+                font-size: 0.85rem;
+            }
+
+            .highlight-clause {
+                padding: 10px 12px;
+            }
+        }
+
+        /* Media wrapper & elements */
+        .media-container-ad {
+            margin: 15px 0;
+            width: 100%;
+            max-height: 250px;
+            overflow: hidden;
+            border-radius: 6px;
+        }
+
+        .media-container-ad img, 
+        .media-container-ad video {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* Button & disabled state styling */
+        .btn-blue-ad {
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s ease, opacity 0.2s ease;
+        }
+
+        .btn-blue-ad:hover:not(:disabled) {
+            background-color: #0056b3;
+        }
+
+        .btn-blue-ad:disabled {
+            background-color: #6c757d;
+            cursor: not-allowed;
+            opacity: 0.65;
+        }
+
+        /* Overlay styling */
+        .modal-overlay-ad {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        /* Modal box container */
+        .modal-box-ad {
+            background-color: #ffffff;
+            padding: 24px;
+            max-width: 450px;
+            width: 90%;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .text-center {
+            text-align: center !important;
+        }
+
+        .rounded-rect {
+            border-radius: 8px;
+            border: 1px solid var(--fort-gray-border);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+        }
+        
+        /* =========================================================
+        CUSTOM SCROLLBAR STYLES (Code 1 & Code 2)
+        ========================================================= */
+
+        /* Firefox standard scrollbar properties */
+        * {
+            scrollbar-width: thin;
+            scrollbar-color: var(--fort-blue-light, #3182ce) rgba(0, 0, 0, 0.05);
+        }
+
+        /* WebKit-based browsers (Chrome, Edge, Safari) */
+        ::-webkit-scrollbar {
+            width: 7px !important;
+            height: 7px !important; /* Handles horizontal scrollbars on <pre> and tables */
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.05) !important;
+            border-radius: 10px !important;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--fort-blue-light, #3182ce) !important;
+            border-radius: 10px !important;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #0288d1 !important; /* Subtle hover highlight matching accent colors */
+        }
+
+    </style>
+</head>
+<body>
+
+    <a href="index.html" class="back-btn">← Go Back to Fort Graphics</a>
+
+    <div class="legal-box">
+        <h1>Fort Developers & Fort Graphics Marketplace Master Service Agreement & Terms and Conditions</h1>
+        <p class="meta-info"><strong>Operational Policy Governance Audit Baseline | Effective Date: August 2026 Legal Revision</strong></p>
+        <hr style="margin: 20px 0; border: 0; border-top: 1px solid #cbd5e0;">
+
+        <p>Welcome to the <strong>Fort Developers / Fort Graphics</strong> platform ("the Platform", "We", "Us", or "Our"). This legally binding Terms and Conditions document governs all interactions, digital service orders, design submissions, financial payouts, developer interactions, and asset transfers initiated through our marketplace infrastructure. By accessing, registering, offering design/development services, or commissioning projects on our platform, you ("User", "Client", "Designer", or "Developer") unconditionally agree to adhere to all terms, policies, and operational constraints set forth herein.</p>
+
+        <!-- SECTION 1 -->
+        <h2>1. Strict Project SLA & Mandatory 2-Day Delivery Rule</h2>
+        <p>To ensure high operational speed and exceptional client satisfaction across the platform, Fort Developers / Fort Graphics enforces a strict Service Level Agreement (SLA) regarding project fulfillment timeframes.</p>
+        <div class="highlight-clause">
+            <p><strong>Mandatory SLA Rule:</strong> Every project, job order, digital asset commission, or development task collected by a designer or developer through this platform <strong>MUST be completed and delivered within exactly two (2) calendar days (48 hours)</strong> from the precise moment of task acceptance or assignment, unless an explicit, documented time extension is authorized prior to task acceptance.</p>
+        </div>
+        <p>Failure to meet the strict 2-day delivery window without an approved extension will result in an automatic flag on the designer's internal reliability index, potential reassignment of the project to a secondary developer, forfeiture of priority job routing, and potential financial penalties including project cancellation. Repeated failure to adhere to the 2-day fulfillment timeline will result in permanent termination of the designer's or developer's platform access credentials.</p>
+
+        <!-- SECTION 2 -->
+        <h2>2. Client Satisfaction & Escrow Authorization Protocol</h2>
+        <p>The platform operates an escrow-style protection framework designed to guarantee quality assurance and protect the fiscal interests of project owners (clients).</p>
+        <ul>
+            <li><strong>Conditional Payment Hold:</strong> Upon commissioning a project, client funds are securely escrowed by the platform. <strong>No funds shall be disbursed, released, or paid out to the designer or developer until the project owner explicitly approves the delivered work to his or her complete satisfaction.</strong></li>
+            <li><strong>Review and Revisions:</strong> The client retains the right to inspect delivered assets, request necessary revisions, and verify that all pre-agreed design or development specifications have been fully met.</li>
+            <li><strong>Dispute Resolution:</strong> If a project owner reasonably demonstrates that the delivered work fails to meet the project brief or agreed standards, the funds will remain locked in escrow until the designer rectifies all highlighted deficiencies. If satisfaction cannot be achieved, the platform administrators reserve the right to process a full or partial refund to the project owner.</li>
+        </ul>
+
+        <!-- SECTION 3 -->
+        <h2>3. Maximum Active Project Limits (Capacity Constraints)</h2>
+        <p>To prevent workflow overload, burnout, and quality degradation across graphic design and technical development jobs, the platform strictly enforces a concurrency constraint on project ownership.</p>
+        <div class="highlight-clause">
+            <p><strong>Concurrency Rule:</strong> No individual designer, developer, or agency account is permitted to hold, accept, or work on <strong>more than two (2) active projects simultaneously</strong> at any single point in time.</p>
+        </div>
+        <p>Our automated dispatch systems will automatically lock a designer's queue once they reach the limit of two active, unapproved projects. A designer or developer will only become eligible to collect or accept a new project once one or both of their active projects have been formally approved, finalized, and closed out by the respective project owner(s).</p>
+
+        <!-- SECTION 4 -->
+        <h2>4. Financial Revenue Split & Price Increase Incentive Model</h2>
+        <p>Fort Developers / Fort Graphics operates a transparent revenue-sharing framework designed to heavily favor the creative talent and technical experts delivering value on our platform.</p>
+        
+        <h3>4.1 Revenue Sharing Ratio</h3>
+        <p>All gross revenues, project fees, and transaction sums collected for completed and approved projects shall be split strictly on a <strong>33.3% to 77.7% ratio</strong> basis:</p>
+        <ul>
+            <li><strong>77.7% Share:</strong> Disbursed directly to the active <strong>Designer or Developer</strong> responsible for fulfilling the project (representing the higher majority share).</li>
+            <li><strong>33.3% Share:</strong> Retained by <strong>Fort Developers / Fort Graphics</strong> to cover platform maintenance, server infrastructure, payment gateway processing, customer support operations, and platform marketing.</li>
+        </ul>
+
+        <h3>4.2 Designer-Driven Price Increments & Earnings Expansion</h3>
+        <p>Designers and developers possess the operational leverage to adjust or increment base pricing on specialized project tasks, complex scopes, or custom visual briefs presented to customers.</p>
+        <p><strong>Direct Income Correlation:</strong> Any approved increment in the final project price quoted to and paid by the customer will directly increase the absolute net income earned by the designer for that project. Because the 77.7% payout ratio applies to the total agreed-upon project cost, any upward pricing negotiation directly inflates the designer’s financial yield per project.</p>
+
+        <!-- SECTION 5 -->
+        <h2>5. Bank Account Details Accuracy & Indemnity Waiver</h2>
+        <p>It is the sole responsibility of every user, designer, and developer to maintain accurate, up-to-date, and verified financial details inside their account profile settings for the receipt of withdrawal payouts or refunds.</p>
+
+        <h3>5.1 Complete Liability Disclaimer</h3>
+        <div class="highlight-clause">
+            <p><strong>Indemnity Clause:</strong> <strong>Fort Developers and Fort Graphics shall NOT be held liable or financially responsible</strong> for any lost funds, misrouted transactions, failed payouts, or transfers made to incorrect bank accounts resulting from a mismatch, mistake, typo, or error in the account details provided by the user.</p>
+        </div>
+        <p>Once payout execution is triggered using the banking credentials registered on the user's dashboard, the transaction is considered legally fulfilled by the platform. We bear no obligation to recover or reimburse funds sent to third-party accounts due to user profile input errors.</p>
+
+        <h3>5.2 Resolution via Customer Care Lines</h3>
+        <p>In the event that a user identifies an error in their listed payout account details prior to a scheduled transfer, or experiences a payout discrepancy:</p>
+        <p>The issue <strong>can be resolved by immediately contacting our official Customer Care lines and direct chat channels</strong>. Users must undergo identity re-verification with customer support representatives to correct banking metadata before subsequent financial disbursements are processed. Customer care agents will pause pending transfers provided notification is received before batch banking routines execute.</p>
+
+        <!-- SECTION 6 -->
+        <h2>6. Strict Data Privacy, Asset Integrity, and Confidentiality</h2>
+        <p>Fort Developers / Fort Graphics recognizes the sensitive nature of commercial branding materials, source code, trade secrets, and personal identity information submitted to our infrastructure.</p>
+        <ul>
+            <li><strong>Nondisclosure of Client Assets:</strong> All creative briefs, graphics, source code, media files, client identity logs, brand assets, and project data provided by project owners remain strictly confidential.</li>
+            <li><strong>Prohibition on Data Mining & Reuse:</strong> Designers and developers are explicitly barred from selling, redistributing, publicly showcasing (without written consent), leaks, or repurposing client materials, draft designs, or private instructions for secondary commercial gain.</li>
+            <li><strong>Security Infrastructure:</strong> Platform administration employs encrypted databases to safeguard corporate profiles and communication logs. Any breach of client confidentiality by a designer or partner entity will result in immediate legal termination, account forfeiture, and potential civil litigation for damages.</li>
+        </ul>
+
+        <!-- SECTION 7 -->
+        <h2>7. Account Profile Validation and Merchant Verification Rules</h2>
+        <p>Accessing marketplace transaction routing channels demands active alignment with our platform safety rules. Users pledge true, accurate, non-fraudulent identification entries during account creation. Only authorized business entities and verified individuals may create, update, or append digital commercial work, developer listings, or design catalogs on our network grids.</p>
+        <p>Any attempt to create an account profile using fraudulent text parameters, expired registration documents, or stolen business credentials will trigger an immediate lockout. Fort Developers / Fort Graphics preserves the absolute right to audit all account profiles against legal identification frameworks. Members agree to update their compliance data immediately upon modification to ensure the platform remains secure.</p>
+
+        <!-- SECTION 8 -->
+        <h2>8. Platform Moderation, Chat Governance, and System Modifications</h2>
+        <p>The platform provides integrated chat channels to facilitate clear project scoping between clients, developers, and designers. All communications inside these channels must remain civil, professional, and directly focused on project delivery.</p>
+        <p>Using platform chat for off-site payment redirection scams, harassment, or malicious link sharing will result in immediate account termination. Fort Developers / Fort Graphics reserves the absolute right to review flagged communications, edit or purge non-compliant project listings, update service fee structures, and modify these Terms and Conditions as needed to preserve network health, platform security, and fair operational governance.</p>
+
+        <hr style="margin: 30px 0 20px 0; border: 0; border-top: 1px solid #cbd5e0;">
+        <p style="text-align: center; font-size: 0.85rem; color: #a0aec0;">
+            © 2026 Fort Developers & Fort Graphics Marketplace Platform. All Rights Reserved. Legal Policy Governance Framework.
+        </p>
+    </div>
+
+</body>
+</html>
