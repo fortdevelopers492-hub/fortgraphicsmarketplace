@@ -2216,18 +2216,2655 @@ body {
     }
 }
 
-.scrollable-container::-webkit-scrollbar {
-    width: 7px !important;
+/* ==========================================================================
+   Designer History Log Mobile Layout Rules
+   ========================================================================== */
+@media (max-width: 768px) {
+    /* Set card layout to a column stack with relative positioning for absolute element placement */
+    .history-card {
+        display: flex !important;
+        flex-direction: column !important;
+        position: relative !important;
+        padding-top: 32px !important; /* Space for the top-right date/time */
+    }
+
+    /* 1. Time and Date: Fixed to top-right corner */
+    .history-meta-right {
+        position: absolute !important;
+        top: 12px !important;
+        right: 12px !important;
+        text-align: right !important;
+    }
+
+    .history-info-left {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+    }
+
+    /* 2. Project Title: Directly under top area */
+    .history-project-title {
+        order: 1 !important;
+        margin-top: 0 !important;
+    }
+
+    /* 3. Requester Name: Placed under project title */
+    .history-requester-info {
+        order: 2 !important;
+        margin-top: 4px !important;
+    }
+
+    /* Target inner container holding the badge and action text */
+    .history-info-left > div:last-child {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 6px !important;
+        margin-top: 8px !important;
+    }
+
+    /* 4. History Badge: Vertically below requester info */
+    .history-badge {
+        order: 3 !important;
+        margin-left: 0 !important;
+    }
+
+    /* 5. Log Action Text: Positioned under badge */
+    .history-info-left > div:last-child > span:not(.history-badge) {
+        order: 4 !important;
+        margin-left: 0 !important; /* Reset inline spacing */
+    }
 }
 
-.scrollable-container::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.05) !important;
-    border-radius: 10px !important;
+/* ==========================================================================
+   Template Preview Modal Desktop Layout (X button inline on top right)
+   ========================================================================== */
+.template-modal-header {
+    display: flex;
+    flex-direction: row-reverse; /* Places close button on the top right */
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    width: 100%;
 }
 
-.scrollable-container::-webkit-scrollbar-thumb {
-    background: var(--fort-blue-light, #3182ce) !important;
-    border-radius: 10px !important;
+.template-modal-close-btn {
+    align-self: center;
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: #64748b;
+    line-height: 1;
+    padding: 0;
+}
+
+.template-modal-title {
+    margin: 0;
+    font-size: 1.25rem;
+    color: #0f172a;
+}
+
+.template-modal-action-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 16px;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.template-modal-price {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #0f172a;
+}
+
+.template-modal-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+
+/* ==========================================================================
+   Template Preview Modal Responsive Mobile Layout (X button above title)
+   ========================================================================== */
+@media (max-width: 768px) {
+    /* X button shifts to top right, Title moves underneath */
+    .template-modal-header {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+    }
+
+    .template-modal-close-btn {
+        align-self: flex-end !important;
+        margin-bottom: 4px !important;
+    }
+
+    .template-modal-title {
+        width: 100% !important;
+    }
+
+    /* Action row & buttons stack vertically on mobile */
+    .template-modal-action-row {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 12px !important;
+    }
+
+    .template-modal-price {
+        text-align: center !important;
+    }
+
+    .template-modal-buttons {
+        flex-direction: column !important;
+        width: 100% !important;
+        gap: 10px !important;
+    }
+
+    .template-modal-buttons button,
+    .template-modal-buttons .btn-fort-download {
+        width: 100% !important;
+        justify-content: center !important;
+    }
+}
+
+/* Fullscreen Mobile Modals Query with Safe Overflow Alignment */
+@media (max-width: 768px) {
+    .modal-overlay,
+    .modal-overlay-ad {
+        padding: 0 !important;
+    }
+
+    /* Outer Container: Scroll handling & base alignment */
+    .modal-box,
+    .modal-box-expanded,
+    .paystack-modal-box,
+    .modal-box-ad {
+        width: 100vw !important;
+        height: 100vh !important;
+        max-width: 100vw !important;
+        max-height: 100vh !important;
+        margin: 0 !important;
+        border-radius: 0 !important;
+        border: none !important;
+        box-sizing: border-box !important;
+        display: flex !important;
+        flex-direction: column !important;
+        overflow-y: auto !important;
+        -webkit-overflow-scrolling: touch;
+        /* Do NOT set justify-content: center here */
+    }
+
+    /* Safe Vertical Centering: Auto margins center short content 
+       without hiding top content when scrolling is triggered */
+    .modal-box > *:first-child,
+    .modal-box-expanded > *:first-child,
+    .paystack-modal-box > *:first-child,
+    .modal-box-ad > *:first-child {
+        margin-top: auto !important;
+    }
+
+    .modal-box > *:last-child,
+    .modal-box-expanded > *:last-child,
+    .paystack-modal-box > *:last-child,
+    .modal-box-ad > *:last-child {
+        margin-bottom: auto !important;
+    }
+
+    /* Ensure children fill the width */
+    .modal-box > *,
+    .modal-box-expanded > *,
+    .paystack-body-content,
+    .modal-box-ad > * {
+        width: 100% !important;
+    }
+
+    /* Restore form labels & paragraph visibility */
+    .form-input-container label {
+        display: block !important;
+    }
+
+    #logout-modal-content p {
+        display: block !important;
+    }
+}
+
+/* ==========================================================================
+   Responsive Mobile Modal System (Auto-adapting Bottom Sheet & Tall Modals)
+   ========================================================================== */
+@media (max-width: 768px) {
+    /* 1. Backdrop Overlay & Smooth Glass Effect */
+    .modal-overlay,
+    .modal-overlay-ad {
+        padding: 0 !important;
+        align-items: flex-end !important; /* Anchors short/compact modals to the bottom */
+        backdrop-filter: blur(4px) !important;
+        -webkit-backdrop-filter: blur(4px) !important;
+        background-color: rgba(0, 34, 68, 0.45) !important;
+    }
+
+    /* 2. Unified Base Styles for ALL Modals */
+    .modal-box,
+    .modal-box-expanded,
+    .paystack-modal-box,
+    .modal-box-ad {
+        width: 100vw !important;
+        max-width: 100vw !important;
+        max-height: 100vh !important;
+        margin: 0 !important;
+        box-sizing: border-box !important;
+        display: flex !important;
+        flex-direction: column !important;
+        
+        /* Rounded sheet presentation for short/medium content */
+        border-top-left-radius: 20px !important;
+        border-top-right-radius: 20px !important;
+        border-bottom-left-radius: 0 !important;
+        border-bottom-right-radius: 0 !important;
+        border: none !important;
+        box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.2) !important;
+
+        /* Touch-friendly scrolling */
+        overflow-y: auto !important;
+        -webkit-overflow-scrolling: touch;
+
+        /* Slide-up entrance animation */
+        animation: sheetSlideUp 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        position: relative;
+    }
+
+    /* 3. Visual Drag Indicator Line at the Top */
+    .modal-box::before,
+    .modal-box-expanded::before,
+    .paystack-modal-box::before,
+    .modal-box-ad::before {
+        content: '';
+        display: block;
+        width: 42px;
+        height: 4px;
+        background-color: var(--fort-gray-border, #cbd5e0);
+        border-radius: 2px;
+        margin: 0 auto 16px auto;
+        flex-shrink: 0;
+    }
+
+    /* 4. Safe Vertical Alignment Mechanics */
+    /* Prevents tall overflowing content from hiding past top y-axis boundary */
+    .modal-box > *:first-child,
+    .modal-box-expanded > *:first-child,
+    .paystack-modal-box > *:first-child,
+    .modal-box-ad > *:first-child {
+        margin-top: 0 !important;
+    }
+
+    /* 5. Child Node Width Stretch */
+    .modal-box > *,
+    .modal-box-expanded > *,
+    .paystack-body-content,
+    .modal-box-ad > * {
+        width: 100% !important;
+    }
+
+    /* 6. Form Label & Paragraph Visibility Restorations */
+    .form-input-container label {
+        display: block !important;
+    }
+
+    #logout-modal-content p {
+        display: block !important;
+    }
+}
+
+/* Bottom Sheet Entrance Keyframe */
+@keyframes sheetSlideUp {
+    from {
+        transform: translateY(100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .profile-left-avatar-frame {
+        align-items: center;
+        align-self: center;
+    }
+
+    .profile-right-fields-column {
+        align-items: center;
+        align-self: center;
+    }
+}
+
+/* Custom Admin Payouts Interface Styles */
+.payout-tab-btn {
+    padding: 8px 16px;
+    border-radius: 6px;
+    border: 1px solid #cbd5e1;
+    background: #f8fafc;
+    color: #475569;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.payout-tab-btn.active {
+    background: #0f172a;
+    color: #ffffff;
+    border-color: #0f172a;
+}
+
+.admin-payouts-list-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.payout-user-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.payout-user-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.custom-admin-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(15, 23, 42, 0.65);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.custom-admin-modal-overlay.hidden-node {
+    display: none !important;
+}
+
+.custom-admin-modal-box {
+    background: #ffffff;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 500px;
+    padding: 24px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.modal-header-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #f1f5f9;
+    padding-bottom: 10px;
+}
+
+.close-modal-x {
+    background: none;
+    border: none;
+    font-size: 1.25rem;
+    cursor: pointer;
+    color: #64748b;
+}
+
+.payout-modal-summary-box {
+    background: #f8fafc;
+    border-radius: 8px;
+    padding: 12px;
+    margin-top: 12px;
+    font-size: 0.88rem;
+    color: #334155;
+}
+
+.payout-logs-mini-container {
+    max-height: 180px;
+    overflow-y: auto;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 8px;
+}
+
+.payout-mini-log-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 0;
+    border-bottom: 1px dashed #f1f5f9;
+    font-size: 0.82rem;
+}
+
+.tag-payout {
+    background-color: #020b33;
+    color: #ffffff;
+}:root {
+    --fort-blue-primary: #0044cc;
+    --fort-blue-dark: #002244;
+    --fort-blue-light: #0288d1;
+    --fort-blue-teal: #004d40;
+    --fort-blue-mint: #e0f2f1;
+    --fort-white-pure: #ffffff;
+    --fort-white-snow: #fcfcfc;
+    --fort-gray-bg: #f4f7f6;
+    --fort-gray-border: #cbd5e0;
+    --fort-gray-slate: #718096;
+    --fort-danger-red: #e53e3e;
+    --fort-danger-bg: #fff5f5;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+body {
+    background-color: var(--fort-gray-bg);
+    color: var(--fort-blue-dark);
+    height: 100vh;
+    overflow: hidden;
+}
+
+.rounded-rect {
+    border-radius: 8px;
+    border: 1px solid var(--fort-gray-border);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+}
+
+.circle-container {
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.scrollable-container {
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.hidden-node, .hidden-view, .hidden {
+    display: none !important;
+}
+
+.text-center { text-align: center; }
+.bold-text { font-weight: 700; }
+.margin-top-xs { margin-top: 4px; }
+.margin-top-sm { margin-top: 10px; }
+.margin-top-md { margin-top: 20px; }
+.margin-top-lg { margin-top: 30px; }
+.border-top-divider { border-top: 1px solid var(--fort-gray-border); }
+
+/* Unified Structural Button Control Elements Styles */
+.btn-blue, .btn-gray, .btn-danger, .btn-sm-pencil {
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background 0.2s, opacity 0.2s;
+    border: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+.btn-blue { background-color: var(--fort-blue-light); color: var(--fort-white-pure); }
+.btn-blue:hover { background-color: #0277bd; }
+.btn-blue:disabled { background-color: #b3e5fc !important; color: #81d4fa !important; cursor: not-allowed; }
+.btn-gray { background-color: #e2e8f0; color: #4a5568; }
+.btn-gray:hover { background-color: #cbd5e0; }
+.btn-danger { background-color: var(--fort-danger-red); color: var(--fort-white-pure); }
+.btn-danger:hover { background-color: #c53030; }
+.btn-sm-pencil { padding: 4px 8px; font-size: 0.8rem; background-color: #edf2f7; border: 1px solid #cbd5e0; }
+.btn-group { display: flex; gap: 12px; margin-top: 14px; }
+
+/* Modal Infrastructure Overlays Layer Stacks Layouts */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background-color: rgba(0, 34, 68, 0.5);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 20px;
+}
+.modal-overlay.active { display: flex; }
+.modal-box {
+    background: var(--fort-white-pure);
+    padding: 28px;
+    width: 100%;
+    max-width: 480px;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+.modal-box h2, .modal-box h3 { color: var(--fort-blue-primary); margin-bottom: 12px; font-weight: 800; }
+.modal-box p { font-size: 0.92rem; color: var(--fort-gray-slate); line-height: 1.5; }
+
+.modal-box-expanded {
+    background: var(--fort-white-pure);
+    padding: 32px;
+    width: 100%;
+    max-width: 900px;
+    max-height: 85vh;
+    margin: auto;             /* Forces centering inside flex container */
+    overflow-y: auto;          /* Ensures scrollability if content exceeds max-height */
+    box-sizing: border-box;
+}
+
+/* Master Form Inputs Elements Layout Styles Mapping */
+.form-input-container { margin-bottom: 16px; text-align: left; }
+.form-input-container label { display: block; font-size: 0.82rem; font-weight: 700; color: var(--fort-blue-dark); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+.form-field-control, .form-text-area {
+    width: 100%; padding: 10px 12px; border-radius: 6px; border: 1px solid var(--fort-gray-border); font-size: 0.95rem; color: var(--fort-blue-dark); background-color: var(--fort-white-snow);
+}
+.form-field-control:focus, .form-text-area:focus { border-color: var(--fort-blue-light); outline: none; }
+.form-text-area { height: 80px; resize: none; }
+.form-checkbox-group-row { display: flex; align-items: center; gap: 8px; margin-top: 8px; text-align: left; }
+.form-checkbox-group-row input[type="checkbox"] { width: 16px; height: 16px; cursor: pointer; }
+.text-danger-alert { background-color: var(--fort-danger-bg); color: var(--fort-danger-red); border: 1px solid #feb2b2; padding: 8px 12px; border-radius: 6px; font-size: 0.82rem; font-weight: 600; margin-top: 6px; }
+
+/* Core Layout Shell Scopes Wrapper Structural Framework */
+.app-container { display: flex; flex-direction: column; height: 100vh; width: 100vw; }
+.top-nav-bar {
+    height: 64px; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; color: var(--fort-white-pure); transition: height 0.2s ease; overflow: hidden; z-index: 90;
+}
+.bg-blue { background-color: var(--fort-blue-primary); border-bottom: 2px solid var(--fort-blue-dark); }
+.top-nav-bar.relapsed-nav { height: 0px; padding: 0px; border-bottom: none; }
+.nav-toggle-btn { background: none; border: none; color: inherit; font-size: 1.6rem; cursor: pointer; }
+.search-container { flex: 1; max-width: 500px; margin: 0 20px; }
+.search-container input { width: 100%; padding: 8px 16px; border-radius: 20px; border: none; background-color: rgba(255,255,255,0.15); color: #fff; font-size: 0.92rem; }
+.search-container input::placeholder { color: rgba(255,255,255,0.6); }
+.search-container input:focus { background-color: rgba(255,255,255,0.25); outline: none; }
+.nav-right-actions { display: flex; align-items: center; gap: 16px; }
+.profile-avatar-trigger { width: 36px; height: 36px; cursor: pointer; border: 2px solid rgba(255,255,255,0.8); border-radius: 50%; overflow: hidden; }
+.profile-avatar-trigger img { width: 100%; height: 100%; object-fit: cover; }
+.expand-collapse-btn { background: none; border: none; color: #fff; font-size: 1.1rem; cursor: pointer; }
+
+.main-workspace { display: flex; flex: 1; height: calc(100vh - 64px); position: relative; overflow: hidden; }
+.top-nav-bar.relapsed-nav ~ .main-workspace { height: 100vh; }
+
+/* Restructured Modern Side Navigation Panel Layout */
+.side-drawer-menu {
+    width: 280px; background-color: var(--fort-white-pure); border-right: 1px solid var(--fort-gray-border); display: flex; flex-direction: column; padding: 20px; transition: width 0.2s, transform 0.2s; z-index: 95;
+}
+.side-drawer-menu.closed { width: 0px; padding: 0px; overflow: hidden; border-right: none; }
+.drawer-header-pane-card {
+    background-color: var(--fort-white-snow); padding: 14px; border: 1px solid var(--fort-gray-border); display: flex; align-items: center; gap: 12px; margin-bottom: 24px;
+}
+#drawer-user-avatar-frame-node { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; background-color: #edf2f7; border: 2px solid var(--fort-blue-light); }
+.profile-mode-tag-label { display: inline-block; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; padding: 2px 6px; border-radius: 4px; margin-top: 4px; }
+.profile-mode-tag-label.personal { background-color: #e2e8f0; color: #4a5568; }
+.profile-mode-tag-label.business { background-color: #cce4ff; color: #004085; }
+.profile-mode-tag-label.admin-tier { background-color: #fed7d7; color: #9b2c2c; }
+.drawer-links { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+.drawer-links li { padding: 12px 14px; border-radius: 6px; font-weight: 600; font-size: 0.92rem; color: var(--fort-blue-dark); cursor: pointer; transition: background 0.15s; }
+.drawer-links li:hover { background-color: var(--fort-gray-bg); color: var(--fort-blue-light); }
+.hidden-admin-node { display: none !important; }
+
+/* Core Layout Routing Multi Viewports Surface Surface Nodes */
+.content-view-port { flex: 1; padding: 24px; height: 100%; background-color: var(--fort-gray-bg); position: relative; }
+.view-page { display: flex; flex-direction: column; height: 90%; width: 100%; }
+
+/* Category Ribbon Sub System Wrapper Control Layout Elements */
+.categories-bar-wrapper { margin-bottom: 20px; background-color: var(--fort-white-pure); padding: 12px; border-radius: 8px; border: 1px solid var(--fort-gray-border); }
+.category-toggle { background: none; border: none; font-weight: 700; color: var(--fort-blue-primary); cursor: pointer; font-size: 0.9rem; }
+.category-items-grid { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; padding-top: 12px; border-top: 1px solid #edf2f7; }
+.category-chip-btn { padding: 6px 14px; border-radius: 20px; border: 1px solid var(--fort-gray-border); background-color: var(--fort-white-snow); color: var(--fort-gray-slate); font-size: 0.82rem; font-weight: 600; cursor: pointer; }
+.category-chip-btn.active { background-color: var(--fort-blue-light); color: #fff; border-color: var(--fort-blue-light); }
+
+/* Grid Pipeline Layout System for Products Discovery Container Cards */
+.products-master-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding-bottom: 40px;
+}
+.product-item-card-container {
+    background-color: var(--fort-white-pure);
+    border: 1px solid var(--fort-gray-border);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    height: 390px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.product-item-card-container:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 15px rgba(0,0,0,0.04);
+}
+.poster-profile-strip {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    background-color: var(--fort-white-snow);
+    border-bottom: 1px solid #edf2f7;
+    cursor: pointer;
+}
+.poster-profile-strip:hover .mini-profile-business-name {
+    color: var(--fort-blue-light);
+}
+.mini-profile-avatar { width: 24px; height: 24px; border-radius: 50%; object-fit: cover; background-color: #edf2f7; }
+.mini-profile-business-name { font-size: 0.78rem; font-weight: 700; color: var(--fort-blue-dark); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.product-card-image-box {
+    width: 100%;
+    height: 160px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 10px;
+    cursor: pointer;
+}
+.product-card-image-box img { width: 100%; height: 100%; object-fit: contain; }
+.product-card-details-block {
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    overflow: hidden;
+    cursor: pointer;
+}
+.product-card-title { font-size: 0.92rem; font-weight: 700; color: var(--fort-blue-primary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.product-card-description { font-size: 0.8rem; color: var(--fort-gray-slate); line-height: 1.4; margin-top: 4px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; }
+.product-card-price-tag { font-size: 1.2rem; font-weight: 800; color: var(--fort-blue-light); margin-top: 8px; }
+
+/* Programmatic Embedded Google AdSense Inline Banner Display Blocks Slots Components styling */
+.adsense-tracker-placeholder-box {
+    grid-column: 1 / -1;
+    background-color: #fff;
+    border: 1px dashed var(--fort-gray-border);
+    padding: 16px;
+    text-align: center;
+    color: var(--fort-gray-slate);
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background-image: radial-gradient(#edf2f7 20%, transparent 20%), radial-gradient(#edf2f7 20%, transparent 20%);
+    background-size: 8px 8px;
+    background-position: 0 0, 4px 4px;
+}
+
+/* Restructured Unified Platform Component Configurations Profile Containers Grid */
+.settings-section-container {
+    background-color: var(--fort-white-pure);
+    padding: 24px;
+    border: 1px solid var(--fort-gray-border);
+    margin-bottom: 24px;
+}
+.settings-control-grid { display: grid; grid-template-columns: 240px 1fr; gap: 24px; height: 100%; }
+.settings-tabs-sidebar { display: flex; flex-direction: column; gap: 6px; }
+.settings-tab-btn {
+    text-align: left; padding: 12px 16px; border-radius: 6px; background: none; border: none; font-weight: 600; font-size: 0.9rem; color: var(--fort-gray-slate); cursor: pointer; transition: all 0.2s;
+}
+.settings-tab-btn:hover { background-color: rgba(0,0,0,0.02); color: var(--fort-blue-dark); }
+.settings-tab-btn.active { background-color: var(--fort-blue-primary); color: #fff; }
+.settings-content-pane { height: 100%; padding-right: 4px; }
+.settings-sub-panel h2 { font-size: 1.3rem; color: var(--fort-blue-primary); margin-bottom: 18px; font-weight: 800; }
+.profile-photo-center-block { margin-bottom: 24px; position: relative; }
+.pencil-overlay-icon { position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0,51,102,0.7); color: #fff; font-size: 0.75rem; padding: 4px 0; font-weight: bold; }
+.detail-row-item { margin-bottom: 16px; }
+.detail-row-item label { display: block; font-size: 0.78rem; font-weight: 700; color: var(--fort-gray-slate); text-transform: uppercase; margin-bottom: 4px; }
+.detail-row-item-second { margin-bottom: 16px; }
+.detail-row-item-second label { display: block; font-size: 0.78rem; font-weight: 700; color: var(--fort-gray-slate); text-transform: uppercase; margin-bottom: 4px; }
+.editable-field-row { display: flex; align-items: center; justify-content: space-between; background-color: var(--fort-white-snow); padding: 10px 14px; border: 1px solid var(--fort-gray-border); border-radius: 6px; }
+
+/* Messenger Realtime Workspace Visual Pipeline Interface Layout Specifications */
+.pane-header { padding: 16px; border-bottom: 1px solid var(--fort-gray-border); background-color: var(--fort-white-snow); }
+.pane-header h3 { font-size: 1rem; font-weight: 800; color: var(--fort-blue-primary); text-transform: uppercase; letter-spacing: 0.5px; }
+#chat-threads-target-list { flex: 1; overflow-y: auto; }
+.chat-thread-roster-row { display: flex; align-items: center; gap: 12px; padding: 14px; border-bottom: 1px solid #edf2f7; cursor: pointer; transition: background 0.15s; }
+.chat-thread-roster-row:hover { background-color: var(--fort-gray-bg); }
+.chat-thread-roster-row.active { background-color: #e3f2fd; border-left: 4px solid var(--fort-blue-light); }
+
+.empty-placeholder { display: flex; align-items: center; justify-content: center; height: 100%; padding: 40px; text-align: center; color: var(--fort-gray-slate); font-size: 0.92rem; }
+.active-conversation-grid { display: flex; flex-direction: column; height: 100%; width: 100%; position: relative; }
+.chat-context-sub-bar { height: 54px; border-bottom: 1px solid var(--fort-gray-border); display: flex; align-items: center; }
+.message-stream-scroller { flex: 1; padding: 20px; display: flex; flex-direction: column; gap: 12px; background-color: #f7fafc; }
+
+/* Chat Bubble Highlight States & Overlay Controls Bar */
+.chat-bubble-node {
+    max-width: 70%; padding: 12px 14px; position: relative; line-height: 1.4; font-size: 0.92rem; cursor: pointer; transition: filter 0.15s; user-select: none;
+}
+.chat-bubble-node.incoming-msg { background-color: var(--fort-white-pure); align-self: flex-start; border-bottom-left-radius: 0px; color: var(--fort-blue-dark); }
+.chat-bubble-node.outgoing-msg { background-color: #ebf8ff; align-self: flex-end; border-bottom-right-radius: 0px; border-color: #bee3f8; color: #2b6cb0; }
+.chat-bubble-node.selected-highlight { filter: brightness(0.9) contrast(1.1); border: 2px solid var(--fort-blue-light) !important; }
+.msg-meta-row { display: flex; align-items: center; justify-content: flex-end; gap: 6px; font-size: 0.7rem; color: var(--fort-gray-slate); margin-top: 4px; }
+.tick-mark-node { font-weight: 700; color: #a0aec0; }
+.tick-mark-node.seen { color: var(--fort-blue-light); }
+
+.message-action-overlay-bar {
+    position: absolute; top: 54px; left: 0; width: 100%; background-color: #fff; border-bottom: 2px solid var(--fort-blue-light); box-shadow: 0 4px 6px rgba(0,0,0,0.05); display: flex; align-items: center; justify-content: space-between; padding: 10px 20px; z-index: 50;
+}
+
+.chat-input-row-bar { padding: 14px; border-top: 1px solid var(--fort-gray-border); background-color: var(--fort-white-snow); display: flex; gap: 10px; align-items: center; }
+.chat-input-row-bar input[type="text"] { flex: 1; padding: 10px 16px; border: 1px solid var(--fort-gray-border); background-color: #fff; font-size: 0.95rem; }
+.chat-input-row-bar input[type="text"]:focus { outline: none; border-color: var(--fort-blue-light); }
+.attachment-btn { background: none; border: none; font-size: 1.3rem; cursor: pointer; color: var(--fort-gray-slate); padding: 0 4px; }
+.attachment-btn:hover { color: var(--fort-blue-light); }
+
+/* System Admin Dash Metrics Matrix Modules Layouts Grid */
+.admin-timeframe-selector-bar { background-color: var(--fort-white-pure); padding: 14px; border-radius: 8px; border: 1px solid var(--fort-gray-border); display: flex; align-items: center; gap: 12px; }
+.admin-timeframe-selector-bar label { font-size: 0.85rem; font-weight: 700; color: var(--fort-blue-primary); }
+.metrics-statistical-summary-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.metric-card-box { background-color: var(--fort-white-pure); padding: 20px; }
+.metric-card-box h4 { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; color: var(--fort-gray-slate); letter-spacing: 0.5px; }
+.metric-numeric-callout { font-size: 1.4rem; font-weight: 900; color: var(--fort-blue-primary); margin-top: 8px; line-height: 1.2; }
+
+/* Floating Functional Access Controls Structure Node Button Element */
+.floating-action-plus-button-node {
+    position: fixed; bottom: 24px; right: 24px; width: 56px; height: 56px; border-radius: 50%; background-color: var(--fort-blue-light); color: #fff; border: none; font-size: 2rem; font-weight: 300; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(2,136,209,0.4); transition: transform 0.2s, background-color 0.2s; z-index: 80;
+}
+.floating-action-plus-button-node:hover { transform: scale(1.05); background-color: #0277bd; }
+
+.suite-extensions-vertical-stack { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 12px; 
+    margin-top: 12px; 
+}
+
+.suite-extension-row-card { 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    gap: 15px; 
+    padding: 15px; 
+    border: 1px solid var(--fort-gray-border); 
+    background-color: var(--fort-white-snow, #fdfdfd); 
+}
+
+/* Base message bubble relative positioning */
+.message-bubble {
+    position: relative;
+    padding: 10px 14px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    max-width: 70%;
+    background-color: #f1f5f9;
+}
+
+/* Actions bar is invisible by default */
+.message-bubble-actions {
+    display: flex;
+    gap: 6px;
+    margin-top: 6px;
+    padding-top: 6px;
+    border-top: 1px solid rgba(0,0,0,0.05);
+    opacity: 0;
+    transition: opacity 0.15s ease-in-out;
+}
+
+/* Actions bar surfaces on hover */
+.message-bubble:hover .message-bubble-actions {
+    opacity: 1;
+}
+
+/* Action button micro-styles */
+.bubble-action-btn {
+    font-size: 0.75rem;
+    padding: 2px 6px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #edf2f7;
+    color: #4a5568;
+}
+.bubble-action-btn.delete {
+    background-color: #fed7d7;
+    color: #9b2c2c;
+}
+.bubble-action-btn.download {
+    background-color: #ebf8ff;
+    color: #2b6cb0;
+}
+
+/* Contextual Message Hover Actions */
+.msg-hover-actions {
+    position: absolute;
+    top: -14px;
+    right: 12px;
+    display: flex;
+    gap: 4px;
+    background-color: #ffffff;
+    border: 1px solid #cbd5e0;
+    border-radius: 6px;
+    padding: 2px 4px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.15s ease-in-out;
+    z-index: 10;
+}
+
+/* Reveal actions container on message hover */
+.chat-bubble-node:hover .msg-hover-actions {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.msg-action-btn {
+    background: none;
+    border: none;
+    font-size: 0.72rem;
+    cursor: pointer;
+    padding: 3px 6px;
+    color: #4a5568;
+    font-weight: 600;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    transition: background 0.1s;
+}
+
+.msg-action-btn:hover {
+    background-color: #edf2f7;
+    color: #2b6cb0;
+}
+
+.msg-action-btn:hover {
+    background-color: #edf2f7;
+    color: #2b6cb0;
+}
+
+/* Image Message Preview Configuration */
+.msg-action-btn:hover {
+    background-color: #edf2f7;
+    color: #2b6cb0;
+}
+
+.msg-image-preview {
+    max-width: 100%;
+    max-height: 180px;
+    border-radius: 6px;
+    margin-bottom: 6px;
+    display: block;
+    object-fit: cover;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+/* Broadcast Virtual Nodes Visual Styling */
+.broadcast-system-node {
+    background-color: #f7fafc;
+    border-left: 4px solid #3182ce !important;
+}
+.broadcast-system-node.active {
+    background-color: #ebf8ff !important;
+    border-left: 4px solid #2b6cb0 !important;
+}
+
+/* Status Badge Styling */
+.profile-mode-tag-label {
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.profile-mode-tag-label.verified { background-color: #c6f6d5; color: #22543d; }
+.profile-mode-tag-label.unverified { background-color: #feebc8; color: #744210; }
+.profile-mode-tag-label.restricted { background-color: #fed7d7; color: #742a2a; }
+
+/* User Card Layout */
+.editable-field-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    transition: background 0.2s ease;
+}
+.editable-field-row:hover {
+    background-color: #f7fafc !important;
+}
+
+/* Form Layout Helper utilities */
+.admin-inspector-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+.full-width-column {
+    grid-column: span 2;
+}
+.password-toggle-container {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.85rem;
+    margin-top: 4px;
+    color: #4a5568;
+}
+.admin-auth-box {
+    background: #fffaf0;
+    border: 1px dashed #dd6b20;
+    padding: 12px;
+    border-radius: 6px;
+    margin-top: 10px;
+}
+
+/* Individual Product Module Sections Architecture Viewports */
+.website-section-layout { display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; width: 100%; }
+.website-meta-side { display: flex; gap: 24px; width: 100%; align-items: flex-start; }
+.website-info-block { flex: 1; }
+.website-info-block h3 { font-size: 1.4rem; color: var(--fort-blue-primary); font-weight: 800; }
+.website-info-block p { font-size: 1rem; color: var(--fort-blue-dark); line-height: 1.6; }
+
+/* Stack picture/logo above text on mobile screens only */
+@media (max-width: 768px) {
+    .website-meta-side {
+        flex-direction: column;
+        align-items: center; /* Center-aligns image and text block */
+        gap: 16px;
+    }
+
+    .website-info-block {
+        text-align: center; /* Center-aligns title and paragraph */
+        width: 100%;
+    }
+
+    
+}
+
+/* Platform Cards Products Discovery Grid Panel Module Layout */
+.products-master-grid-fortdev {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.product-item-card-container-fortdev {
+    background-color: var(--fort-white-pure);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    height: 240px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.product-item-card-container-fortdev:hover { transform: translateY(-4px); box-shadow: 0 10px 15px rgba(0,0,0,0.05); }
+.product-card-image-box-fortdev { width: 100%; height: 170px; background-color: #fff; display: flex; align-items: center; justify-content: center; padding: 15px; border-bottom: 1px solid var(--fort-gray-border); }
+.product-card-image-box-fortdev img { width: 100%; height: 100%; object-fit: contain; }
+.product-card-details-block-fortdev { padding: 12px; display: flex; align-items: center; justify-content: center; }
+.product-card-title-fortdev { font-size: 0.95rem; font-weight: 700; color: var(--fort-blue-dark); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+.section-content-wrapper-fortdev {
+    width: 100%;
+    max-width: 1000px;
+}
+
+.header-inline-edit-row-fortdev { display: flex; align-items: center; gap: 12px; }
+
+.website-info-block-fortdev { flex: 1; }
+.website-info-block-fortdev h3 { font-size: 1rem; color: var(--fort-blue-primary); font-weight: 800; }
+.website-info-block-fortdev p { font-size: 1rem; color: var(--fort-blue-dark); line-height: 1.6; }
+
+
+/* ==========================================================================
+   Adaptive Responsive Layout Framework (Pure CSS Media Queries)
+   ========================================================================== */
+
+/* Laptop / Desktop Default (No classes needed) */
+.products-master-grid { 
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 20px;
+}
+.settings-control-grid { 
+    display: grid;
+    grid-template-columns: 250px 1fr; 
+}
+.messages-split-layout { 
+    display: grid;
+    grid-template-columns: 350px 1fr; 
+}
+
+/* Tablet / Small Laptop Layout */
+@media (max-width: 1024px) {
+    .products-master-grid { 
+        grid-template-columns: repeat(2, 1fr); 
+    }
+}
+
+/* Mobile Phone Layout (Auto-detected) */
+@media (max-width: 768px) {
+    /* Homepage: One product per row */
+    .products-master-grid { 
+        grid-template-columns: repeat(1, 1fr) !important; 
+        gap: 14px; 
+    }
+
+    /* Settings: Categories aligned horizontally at the top */
+    .settings-control-grid { 
+        grid-template-columns: 1fr; 
+        display: flex;
+        flex-direction: column;
+    }
+    .settings-sidebar-or-categories { /* Adjust selector to your settings menu container */
+        display: flex;
+        flex-direction: row;
+        overflow-x: auto;
+        white-space: nowrap;
+        gap: 10px;
+        padding-bottom: 10px;
+    }
+
+    /* Mobile Side Drawer Navigation */
+    .side-drawer-menu {
+        position: fixed; 
+        top: 0; 
+        left: 0; 
+        height: 100vh; 
+        width: 280px; 
+        transform: translateX(-100%); 
+        transition: transform 0.3s ease;
+        z-index: 100;
+    }
+    .side-drawer-menu.active-phone-drawer { 
+        transform: translateX(0); 
+    }
+
+    /* Messages: Expanded chat view covers the chat list */
+    .messages-split-layout { 
+        grid-template-columns: 1fr; 
+        position: relative; 
+    }
+    .chat-conversation-workspace {
+        position: absolute; 
+        top: 0; 
+        left: 0; 
+        width: 100%; 
+        height: 100%; 
+        display: none; 
+        z-index: 60; 
+        background: #fff; /* Ensures the chat list underneath is fully covered */
+    }
+    .chat-conversation-workspace.phone-active-thread { 
+        display: flex !important; 
+    }
+
+    /* Message Input Container: Stretch input while keeping button right-aligned */
+    .message-input-container {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        padding: 0 10px;
+        box-sizing: border-box;
+    }
+    .message-input-container input {
+        flex-grow: 1; /* Automatically resizes input to fill remaining space */
+        width: 100%;
+    }
+    .message-input-container .send-btn {
+        margin-left: auto; /* Pushes the send button to the absolute right end */
+    }
+
+    /* Responsive Modals */
+    .modal-box {
+        width: 90% !important;
+        max-width: 400px;
+        margin: auto;
+        box-sizing: border-box;
+    }
+}
+
+/* Image Preview Block Formatting Fix */
+.form-input-container-image {
+    font-family: sans-serif; 
+    padding: 20px; 
+    text-align: center;
+}
+.form-input-container-image .preview-box { 
+    width: 300px; 
+    height: 300px; 
+    border: 2px dashed #ccc; 
+    margin: 20px auto; 
+    display: flex;
+    align-items: center; 
+    justify-content: center; 
+    overflow: hidden; 
+}
+.form-input-container-image #imagePreview { 
+    max-width: 100%; 
+    max-height: 100%; 
+    display: none; 
+}
+.form-input-container-image .upload-btn { 
+    padding: 10px 20px; 
+    background: #007BFF; 
+    color: white; 
+    border: none; 
+    cursor: pointer; 
+    border-radius: 5px; 
+}
+
+
+/* Default Laptop/Desktop Navbar Height */
+.navbar {
+    height: 70px; 
+}
+
+/* Auto-adjust Navbar Height for Mobile Screens */
+@media (max-width: 768px) {
+    .navbar {
+        height: 55px; /* Or whatever height you want for mobile */
+    }
+}
+
+/* ==========================================================================
+   Desktop & Large Screens (Side-by-Side Grid Layout)
+   ========================================================================== */
+.messages-split-layout { 
+    display: grid;
+    grid-template-columns: 320px 1fr; 
+    gap: 20px; 
+    height: 100%;
+    position: relative;
+}
+
+.chat-roster-container {
+    background-color: var(--fort-white-pure);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    height: 100%;
+}
+
+/* Explicit layout assignment matching your active DOM workspace container ID */
+#chat-conversation-pane { 
+    background-color: var(--fort-white-pure); 
+    display: flex; 
+    flex-direction: column; 
+    overflow: hidden; 
+    height: 100%; 
+    position: relative; 
+}
+
+
+/* ==========================================================================
+   Mobile Phone Layout (Overlapping Target Pane Architecture)
+   ========================================================================== */
+@media (max-width: 768px) {
+    
+    /* Collapses the side-by-side grid structure to a single responsive container stack */
+    .messages-split-layout { 
+        grid-template-columns: 1fr; 
+        position: relative; 
+        height: 100%;
+    }
+
+    /* Sets the active window pane to float over and mask the behind roster list */
+    #chat-conversation-pane {
+        position: absolute; 
+        top: 0; 
+        left: 0; 
+        width: 100%; 
+        height: 100%; 
+        display: none; /* Kept completely hidden until an active chat row is triggered */
+        z-index: 60; 
+        background-color: var(--fort-white-pure); 
+    }
+
+    /* Target state class toggled by your JavaScript state engine to display the pane */
+    #chat-conversation-pane.phone-active-thread { 
+        display: flex !important; 
+    }
+    
+    /* Normalizes inner toolbar structural paddings across smaller viewports */
+    .chat-context-sub-bar {
+        padding: 0 10px;
+    }
+}
+
+/* ==========================================================================
+   Product Expanded View Mobile Media Queries (Strict Top Stacking)
+   ========================================================================== */
+@media (max-width: 768px) {
+    /* 1. Turn the main parent container into a flat vertical stack */
+    .modal-expanded-content-split-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 12px !important;
+    }
+
+    /* 2. Force the right details column to behave like a normal contents wrapper */
+    .expanded-right-details-column {
+        display: flex !important;
+        flex-direction: column !important;
+        display: contents !important; /* Breaks the inner elements out so they can sort globally */
+    }
+
+    /* 3. Re-assign order values globally across all child blocks */
+    
+    /* User / Vendor Profile Box goes to position 1 (Top) */
+    .expanded-right-details-column > div:first-child {
+        order: 1 !important;
+    }
+
+    /* Left Visuals Column containing the Product Image goes directly underneath User Info */
+    .expanded-left-visuals-column {
+        order: 2 !important;
+        width: 100% !important;
+        margin: 4px 0 !important;
+    }
+
+    /* Force the image wrapper to scale perfectly into a responsive square width */
+    .expanded-master-image-box {
+        width: 100% !important;
+        height: auto !important; 
+        aspect-ratio: 1 / 1 !important; 
+        max-width: 320px !important; 
+        margin: 0 auto !important; 
+    }
+
+    /* Product Title Heading */
+    .expanded-right-details-column > h2 {
+        order: 3 !important;
+        margin-top: 6px !important;
+    }
+
+    /* Product Pricing Label */
+    .expanded-right-details-column > div:nth-child(3) {
+        order: 4 !important;
+    }
+
+    /* Primary Description & AI Specification Blocks */
+    .expanded-right-details-column > .spec-note-paragraph-block {
+        order: 5 !important;
+    }
+
+    /* Action Footer Buttons (Message Seller or Manage Post) */
+    .modal-expanded-actions-footer-row {
+        order: 6 !important;
+        padding-top: 14px !important;
+        margin-top: 10px !important;
+    }
+
+    /* Admin Pin/Leaderboard Control panel forced to the absolute bottom of the viewport */
+    .expanded-right-details-column > div[style*="border: 1px dashed"] {
+        order: 7 !important;
+        margin-top: 14px !important;
+        margin-bottom: 0 !important;
+    }
+}
+
+/* ==========================================================================
+   Product Expanded View Mobile Media Queries (Vertical Square Stacking)
+   ========================================================================== */
+@media (max-width: 768px) {
+    /* 1. Turn the parent grid into a single-column vertical flex container */
+    .modal-expanded-content-split-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 12px !important;
+    }
+
+    /* 2. Break down the details column structural wrapper so its items can sort globally */
+    .expanded-right-details-column {
+        display: contents !important; 
+    }
+
+    /* ==========================================================================
+       GLOBAL ORDERING ARRAY FOR ELEMENT STACKING
+       ========================================================================== */
+
+    /* [POSITION 1] User / Vendor Profile Info Box at the very top */
+    .expanded-right-details-column > div:first-child {
+        order: 1 !important;
+    }
+
+    /* [POSITION 2] Product Image Column sits vertically right under User Info */
+    .expanded-left-visuals-column {
+        order: 2 !important;
+        width: 100% !important;
+        margin: 4px 0 !important;
+    }
+
+    /* Force the image container to scale responsively based on screen width while keeping a square ratio */
+    .expanded-master-image-box {
+        width: 100% !important;
+        height: auto !important; 
+        aspect-ratio: 1 / 1 !important; /* Guarantees a perfect square ratio */
+        max-width: 340px !important; /* Prevents it from getting too large on tablet widths */
+        margin: 0 auto !important; /* Centers the square image nicely if needed */
+    }
+
+    /* [POSITION 3] Product Title Heading */
+    .expanded-right-details-column > h2 {
+        order: 3 !important;
+        margin-top: 8px !important;
+    }
+
+    /* [POSITION 4] Product Pricing Display */
+    .expanded-right-details-column > div:nth-child(3) {
+        order: 4 !important;
+    }
+
+    /* [POSITION 5] Descriptions & Metadata Specifications Box Blocks */
+    .expanded-right-details-column > .spec-note-paragraph-block {
+        order: 5 !important;
+    }
+
+    /* [POSITION 6] Action Footer Buttons (Message Seller or Manage Inventory Details) */
+    .modal-expanded-actions-footer-row {
+        order: 6 !important;
+        padding-top: 14px !important;
+        margin-top: 8px !important;
+    }
+
+    /* [POSITION 7] Admin Pin & Leaderboard Controls Panel forced to the absolute bottom */
+    .expanded-right-details-column > div[style*="border: 1px dashed"] {
+        order: 7 !important;
+        margin-top: 14px !important;
+        margin-bottom: 0 !important;
+    }
+}
+
+/* ==========================================================================
+   "15. Settings Css Queries.txt" - Horizontal Tabs Scroll Query
+   ========================================================================== */
+@media (max-width: 768px) {
+    /* Force the main settings grid layout into a vertical stacking sequence */
+    .settings-control-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 16px !important;
+    }
+
+    /* Force all tab buttons onto a single, non-wrapping horizontal line */
+    .settings-tabs-topbar {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        align-items: center !important;
+        
+        /* Enable smooth hardware-accelerated horizontal touch scrolling */
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        -webkit-overflow-scrolling: touch !important;
+        
+        /* Layout spacing adjustments */
+        width: 100% !important;
+        padding: 8px 4px !important;
+        gap: 8px !important;
+        
+        /* Snaps buttons to grid tracking points while scrolling */
+        scroll-snap-type: x mandatory !important;
+    }
+
+    /* Ensure buttons maintain structural sizing integrity instead of shrinking */
+    .settings-tab-btn {
+        flex: 0 0 auto !important;
+        white-space: nowrap !important;
+        scroll-snap-align: start !important;
+        padding: 8px 16px !important;
+        font-size: 0.85rem !important;
+    }
+
+    /* Optional: Style a clean, visible horizontal scroll bar track to help direct user focus */
+    .settings-tabs-topbar::-webkit-scrollbar {
+        height: 5px !important;
+    }
+    
+    .settings-tabs-topbar::-webkit-scrollbar-track {
+        background: rgba(0, 0, 0, 0.05) !important;
+        border-radius: 10px !important;
+    }
+    
+    .settings-tabs-topbar::-webkit-scrollbar-thumb {
+        background: var(--fort-blue-light, #3182ce) !important;
+        border-radius: 10px !important;
+    }
+}
+
+/* ==========================================================================
+   Responsive Chat Input & Send Button Fix
+   ========================================================================== */
+@media (max-width: 768px) {
+    /* 1. Target your exact input bar container class from your HTML code */
+    .chat-input-row-bar {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        width: 100% !important;
+        padding: 8px 12px !important; /* Proper defensive screen padding spacing */
+        box-sizing: border-box !important;
+        gap: 8px !important; /* Strict tracking gap between field and send button */
+    }
+
+    /* 2. Target the text input field via its structural ID */
+    #chat-text-input-field {
+        flex: 1 1 auto !important; /* Dynamically grows and shrinks to take up available space */
+        min-width: 0 !important;   /* Breaks the native browser text-input minimum sizing boundary width */
+        box-sizing: border-box !important;
+    }
+
+    /* 3. Target the send button inside the message row container precisely */
+    .chat-input-row-bar .btn-blue {
+        flex: 0 0 auto !important;  /* Strict rule: never allow the send button to squish or contract */
+        white-space: nowrap !important; /* Prevents text from wrapping into multiple broken lines */
+        margin-left: auto !important;   /* Pins layout cleanly to the extreme right margin edge */
+    }
+}
+
+
+/* ==========================================================================
+   Unified Profile Avatar Frames (Settings, Website & FortDev Views)
+   ========================================================================== */
+
+/* 1. Base / Settings View: Default 100px Circular Frame */
+.large-avatar-frame,
+.large-avatar-frame-fortdev { 
+    width: 100px; 
+    height: 100px; 
+    margin: 0 auto; 
+    border: 3px solid var(--fort-blue-light); 
+    position: relative; 
+    cursor: pointer; 
+    overflow: hidden; 
+    background-color: #edf2f7; 
+    border-radius: 50%; /* Forces perfect circle */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 2. Website View Variant: Overrides base styles for the 120px layout version */
+.large-avatar-frame.website-variant {
+    width: 120px; 
+    height: 120px; 
+    background-color: #fff; 
+    padding: 10px; 
+    flex-shrink: 0; 
+    border: none; /* Removes the blue border for the product page layout if needed */
+}
+
+/* 3. Core Image Fitting: Applied universally across all variations */
+.large-avatar-frame img,
+.large-avatar-frame-fortdev img { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; /* Crops image cleanly to circle boundaries without distortion */
+}
+
+/* ==========================================================================
+   Category Chips Ribbon Horizontal Scroll Query
+   ========================================================================== */
+@media (max-width: 768px) {
+    /* Force all category chip items onto a single, non-wrapping horizontal line */
+    .category-items-grid {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        align-items: center !important;
+        
+        /* Enable smooth hardware-accelerated horizontal touch scrolling */
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        -webkit-overflow-scrolling: touch !important;
+        
+        /* Layout spacing adjustments matching structural balance */
+        width: 100% !important;
+        padding: 8px 4px !important;
+        gap: 8px !important;
+        
+        /* Snaps chips cleanly to tracking positions while browsing */
+        scroll-snap-type: x mandatory !important;
+    }
+
+    /* Ensure individual chip elements maintain their width instead of collapsing */
+    .category-chip-btn {
+        flex: 0 0 auto !important;
+        white-space: nowrap !important;
+        scroll-snap-align: start !important;
+    }
+
+    /* Clean horizontal scrollbar tracking line styles */
+    .category-items-grid::-webkit-scrollbar {
+        height: 5px !important;
+    }
+    
+    .category-items-grid::-webkit-scrollbar-track {
+        background: rgba(0, 0, 0, 0.05) !important;
+        border-radius: 10px !important;
+    }
+    
+    .category-items-grid::-webkit-scrollbar-thumb {
+        background: var(--fort-blue-light, #0288d1) !important;
+        border-radius: 10px !important;
+    }
+}
+
+
+/* Styling layout for message items with failed transmission flag state properties */
+.chat-bubble-node.transmission-failed-node {
+    background-color: #ffeeee !important;
+    border: 1px solid #e53e3e !important;
+    color: #c53030 !important;
+}
+
+/* Ensure incoming/outgoing default overrides scale gracefully inside failed layouts */
+.chat-bubble-node.transmission-failed-node p {
+    color: #c53030 !important;
+}
+
+.chat-bubble-node.transmission-failed-node .msg-meta-row {
+    color: #e53e3e !important;
+    opacity: 0.8;
+}
+
+.drawer-links-three { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+.drawer-links-three li { padding: 12px 14px; border-radius: 6px; font-weight: 600; font-size: 0.92rem; color: var(--fort-blue-dark); cursor: pointer; transition: background 0.15s; }
+.drawer-links-three li:hover { background-color: var(--fort-gray-bg); color: var(--fort-blue-light); }
+
+
+/* ==========================================
+   Fort Graphics PRELOADER & LOADING ANIMATION
+   ========================================== */
+#preloader-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+    z-index: 99999; /* Ensure it stays on top of everything */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+/* Hide helper class */
+#preloader-container.fade-out {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+/* Logo pulse (heartbeat) animation */
+.preloader-logo {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    margin-bottom: 30px;
+    animation: logoHeartbeat 1.4s ease-in-out infinite;
+}
+
+@keyframes logoHeartbeat {
+    0% {
+        transform: scale(1);
+    }
+    14% {
+        transform: scale(1.15);
+    }
+    28% {
+        transform: scale(1);
+    }
+    42% {
+        transform: scale(1.15);
+    }
+    70% {
+        transform: scale(1);
+    }
+}
+
+/* Rounded rect progress meter wrapper */
+.progress-meter-container {
+    width: 260px;
+    height: 18px;
+    background-color: #e2e8f0; /* Light gray track background */
+    border-radius: 50px;       /* Pill shape rounded rect */
+    padding: 3px;              /* Creates an inner inset look */
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Dynamic filling meter bar */
+.progress-meter-bar {
+    height: 100%;
+    width: 0%; /* Dynamic fill */
+    background-color: #3182ce; /* Primary brand blue */
+    border-radius: 50px;
+    transition: width 0.1s linear, background-color 0.4s ease;
+}
+
+/* Full state turns completely blue */
+.progress-meter-bar.fully-complete {
+    background-color: #1a365d !important; /* Deep/complete brand blue */
+}
+
+/* Optional subtext */
+.preloader-text {
+    margin-top: 10px;
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 0.85rem;
+    color: #718096;
+    font-weight: 500;
+}
+
+/* ==========================================================================
+   Product Settings (Account Inventory Ledger) Mobile Layout Fix
+   Pushes product descriptive info text above the action buttons on mobile screens
+   ========================================================================== */
+@media (max-width: 768px) {
+    /* Target the product inventory row container generated by renderAccountInventoryLedgerManagementDashboardGrid */
+    #my-products-list-container > .rounded-rect {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 12px !important;
+    }
+
+    /* Product thumbnail and descriptive details wrapper */
+    #my-products-list-container > .rounded-rect > div:first-child {
+        width: 100% !important;
+    }
+
+    /* Action buttons container (Edit Details & Delete) */
+    #my-products-list-container > .rounded-rect > div:last-child {
+        width: 100% !important;
+        justify-content: flex-start !important; /* Aligns buttons nicely under the text */
+        border-top: 1px solid var(--fort-gray-border, #cbd5e0);
+        padding-top: 10px !important;
+    }
+
+    /* Optional: Stretch action buttons evenly across mobile screen width */
+    #my-products-list-container > .rounded-rect > div:last-child > button {
+        flex: 1 !important;
+        text-align: center !important;
+    }
+}
+
+/* Leaderboard Slots Styling */
+.leaderboard-settings-section {
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 2px dashed var(--fort-gray-border);
+}
+.slot-card {
+    padding: 12px 16px;
+    border-radius: 6px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid var(--fort-gray-border);
+    transition: all 0.2s ease;
+}
+.slot-owned {
+    background-color: #d4edda !important; /* Green */
+    border-color: #c3e6cb !important;
+    color: #155724;
+}
+.slot-available {
+    background-color: #ffffff !important; /* White */
+    border-color: var(--fort-gray-border) !important;
+    color: var(--fort-blue-dark);
+}
+.slot-unavailable {
+    background-color: #e2e8f0 !important; /* Ash */
+    border-color: #cbd5e0 !important;
+    color: #4a5568;
+}
+.upgrade-notice-box {
+    background-color: #fff5f5;
+    border: 1px solid #fed7d7;
+    color: #9b2c2c;
+    padding: 16px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    text-align: center;
+}
+
+/* Paystack Checkout Screen Modal Specifics */
+.paystack-modal-box {
+    background: var(--fort-white-pure);
+    border-radius: 8px;
+    border: 1px solid var(--fort-gray-border);
+    max-width: 420px;
+    width: 100%;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 34, 68, 0.15);
+}
+.paystack-header-brand {
+    background-color: #09a5db; /* Authentic Paystack Identity Accent Tint */
+    color: var(--fort-white-pure);
+    padding: 20px;
+    text-align: center;
+}
+.paystack-header-brand h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--fort-white-pure) !important;
+}
+.paystack-body-content {
+    padding: 24px;
+}
+.paystack-footer-row {
+    padding: 16px 24px;
+    background-color: var(--fort-white-snow);
+    border-top: 1px solid var(--fort-gray-border);
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+}
+.btn-paystack-complete {
+    background-color: #3bb75e; /* Paystack Green Action */
+    color: var(--fort-white-pure);
+}
+.btn-paystack-complete:hover {
+    background-color: #2ea350;
+}
+
+/* Container for toast notifications in the top-right corner */
+#toast-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  pointer-events: none; /* Let clicks pass through empty container space */
+}
+
+/* Individual Toast Cards */
+.toast-notification {
+  pointer-events: auto;
+  min-width: 280px;
+  max-width: 400px;
+  padding: 14px 18px;
+  border-radius: 8px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  color: #ffffff;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.25), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-weight: bold;
+  
+  /* Initial off-screen right positioning + transition */
+  transform: translateX(120%);
+  opacity: 0;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease-out;
+}
+
+/* Slide in state */
+.toast-notification.toast-show {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+/* Toast Color Variants */
+.toast-notification.toast-success {
+  background-color: #10b981; /* Emerald green */
+}
+
+.toast-notification.toast-error {
+  background-color: #ef4444; /* Bright red */
+}
+
+.toast-notification.toast-info {
+  background-color: #134294; /* Blue */
+}
+
+/* Close Button Inside Toast */
+.toast-close-btn {
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  opacity: 0.75;
+  padding: 0;
+  margin: 0;
+  transition: opacity 1s ease;
+}
+
+.toast-close-btn:hover {
+  opacity: 1;
+}
+
+/* ASSETS PREVIEW CONTAINERS */
+.assets-preview-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 8px;
+}
+
+.asset-preview-thumbnail {
+    width: 60px;
+    height: 60px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    object-fit: cover;
+}
+
+.asset-add-square-btn {
+    width: 60px;
+    height: 60px;
+    border: 2px dashed var(--fort-blue-primary);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: var(--fort-blue-primary);
+    cursor: pointer;
+    background: white;
+}
+
+/* --- Expanded Marketplace & Project Styles --- */
+.watermark-overlay-container {
+    position: relative;
+    width: 100%;
+    height: 260px;
+    background-color: #f7fafc;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--fort-gray-border, #e2e8f0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.watermark-overlay-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.watermark-text-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-30deg);
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: rgba(220, 38, 38, 0.55);
+    -webkit-text-stroke: 1.5px rgba(185, 28, 28, 0.8);
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    pointer-events: none;
+    white-space: nowrap;
+    user-select: none;
+}
+
+.watermark-branding-strip {
+    background: #000000;
+    color: #ffffff;
+    text-align: center;
+    font-size: 0.75rem;
+    padding: 6px 12px;
+    font-weight: 600;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+
+/* Status Badges */
+.badge-status {
+    padding: 4px 10px;
+    font-size: 0.75rem;
+    border-radius: 12px;
+    font-weight: 700;
+    display: inline-block;
+}
+.badge-pending { background-color: #fef3c7; color: #d97706; }
+.badge-not-booked { background-color: #f3f4f6; color: #4b5563; }
+.badge-available { background-color: #d1fae5; color: #059669; }
+.badge-completed { background-color: #e0e7ff; color: #4338ca; }
+
+/* Expanded Customer & Designer Cards */
+.project-expanded-card {
+    background: #ffffff;
+    border: 1px solid var(--fort-gray-border, #e2e8f0);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.asset-chip-button {
+    background: #edf2f7;
+    border: 1px solid #cbd5e0;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s ease;
+}
+.asset-chip-button:hover {
+    background: #e2e8f0;
+}
+
+/* Designer My Projects Layout Grid */
+.designer-projects-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+}
+
+.project-expanded-card {
+    background: #ffffff;
+    border: 1px solid var(--fort-gray-border, #e2e8f0);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+.asset-chip-button {
+    background: #edf2f7;
+    border: 1px solid #cbd5e0;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: background 0.2s ease;
+}
+
+.asset-chip-button:hover {
+    background: #e2e8f0;
+}
+
+.profile-photo-center-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+}
+
+.verification-badge-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    margin-top: 10px;
+    text-transform: capitalize;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.verification-badge-pill.status-verified {
+    background-color: #e6fffa;
+    color: #1abd0b;
+    border: 1px solid #b2f5ea;
+}
+
+.verification-badge-pill.status-unverified {
+    background-color: #fff5f5;
+    color: #9b2c2c;
+    border: 1px solid #feb2b2;
+}
+
+.history-container {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.history-header h2 {
+    margin: 0;
+    color: #0044cc;
+    font-size: 1.5rem;
+}
+
+.history-header p {
+    color: #64748b;
+    font-size: 0.9rem;
+    margin-top: 4px;
+}
+
+.filter-btn {
+    background: #f1f5f9;
+    border: 1px solid #cbd5e1;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+}
+
+.filter-btn.active, .filter-btn:hover {
+    background: #0044cc;
+    color: #ffffff;
+    border-color: #0044cc;
+}
+
+.history-info-left {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.history-project-title {
+    font-weight: 700;
+    font-size: 1rem;
+    color: #1e293b;
+    margin: 0;
+}
+
+.history-requester-info {
+    font-size: 0.85rem;
+    color: #475569;
+}
+
+.history-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+/* Status Tags */
+.tag-booking { background: #e0f2fe; color: #0369a1; }
+.tag-submission { background: #fef3c7; color: #b45309; }
+.tag-modification { background: #ffedd5; color: #c2410c; }
+.tag-approved { background: #dcfce7; color: #15803d; }
+.tag-payment { background: #d1fae5; color: #047857; }
+
+.history-meta-right {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+}
+
+.history-time {
+    font-size: 0.78rem;
+    color: #94a3b8;
+}
+
+.empty-history-state {
+    text-align: center;
+    padding: 40px;
+    color: #94a3b8;
+    background: #f8fafc;
+    border-radius: 8px;
+    border: 1px dashed #cbd5e1;
+}
+
+/* 1. Ensure the parent section takes full width and stacked layout */
+#page-designer-history-page {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    position: relative;
+}
+
+
+/* 3. Ensure cards clear floats and strictly follow normal flow */
+.history-card {
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    /* Remaining properties stay the same */
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+/* Ensure the page section displays strictly as a vertical flexbox */
+#page-designer-history-page {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 100%;
+    height: auto; /* Prevent fixed height collapsing */
+    overflow-y: visible; /* Let normal document scroll handle height */
+    position: relative;
+}
+
+/* Prevent filter bar from collapsing or being covered */
+.history-filter-bar {
+    display: flex;
+    gap: 10px;
+    margin: 20px 0 15px 0;
+    overflow-x: auto;
+    padding-bottom: 8px;
+    flex-shrink: 0; /* Prevents filter bar from shrinking when items list is long */
+    position: relative;
+    z-index: 10;
+}
+
+/* Make feed container take space below filter bar */
+.history-log-feed {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    width: 100%;
+    flex-grow: 1;
+    position: relative;
+    z-index: 1;
+}
+
+/* ==========================================================================
+   Designer Workstation Responsive Mobile Layouts
+   ========================================================================== */
+@media (max-width: 768px) {
+    
+    /* 1. Header: Stacks "Max Active Limit: 2 Projects" badge under the description text */
+    .designer-workspace-header {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 12px !important;
+    }
+
+    .designer-workspace-header .status-pill-badge {
+        align-self: flex-start !important;
+    }
+
+    /* 2. Card Content Body: Converts 2-column grid into a single vertical stack */
+    .project-expanded-card > div[style*="display:grid"] {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 16px !important;
+    }
+}
+
+/* Overlay styling */
+.modal-overlay-ad {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Modal box container */
+.modal-box-ad {
+    background-color: #ffffff;
+    padding: 24px;
+    max-width: 450px;
+    width: 90%;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* Media wrapper & elements */
+.media-container-ad {
+    margin: 15px 0;
+    width: 100%;
+    max-height: 250px;
+    overflow: hidden;
+    border-radius: 6px;
+}
+
+.media-container-ad img, 
+.media-container-ad video {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+/* Button & disabled state styling */
+.btn-blue-ad {
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, opacity 0.2s ease;
+}
+
+.btn-blue-ad:hover:not(:disabled) {
+    background-color: #0056b3;
+}
+
+.btn-blue-ad:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+    opacity: 0.65;
+}
+
+/* Icon & Text Container */
+.card-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* FontAwesome Icon Sizing */
+.card-icon {
+    font-size: 1.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+/* Image Logo Sizing (if using Option 2) */
+.card-logo-img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+/* Buttons */
+.card-btn-link {
+    text-decoration: none;
+    flex-shrink: 0;
+}
+
+/* Responsive Styles for Mobile */
+@media (max-width: 768px) {
+    .suite-extension-row-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .card-btn-link {
+        width: 100%;
+    }
+
+    .card-btn-link .btn-blue {
+        width: 100%;
+    }
+}
+
+/* Stack picture/logo above text on mobile screens only */
+@media (max-width: 768px) {
+    .website-meta-side {
+        flex-direction: column;
+        align-items: center; /* Center-aligns image and text block */
+        gap: 16px;
+    }
+
+    .website-info-block {
+        text-align: center; /* Center-aligns title and paragraph */
+        width: 100%;
+    }
+    
+}
+
+/* ==========================================================================
+   Mobile Centering for Dynamic Website Cards
+   ========================================================================== */
+@media (max-width: 768px) {
+    /* 1. Stack the card contents vertically and center all alignment */
+    .section-content-wrapper-fortdev.website-section-layout {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+    }
+
+    /* 2. Stack the logo icon and text block vertically */
+    .website-meta-side {
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        gap: 12px !important;
+    }
+
+    /* 3. Center header title and text descriptions */
+    .website-info-block-fortdev {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+    }
+
+    .header-inline-edit-row-fortdev {
+        justify-content: center !important;
+        width: 100% !important;
+    }
+
+    .website-info-block-fortdev h3,
+    .website-info-block-fortdev p {
+        text-align: center !important;
+    }
+
+    /* 4. Center the button container and set button to responsive width */
+    .section-content-wrapper-fortdev .margin-top-md {
+        width: 100% !important;
+        display: flex !important;
+        justify-content: center !important;
+        margin-top: 14px !important;
+    }
+
+    .section-content-wrapper-fortdev .btn-blue {
+        margin: 0 auto !important;
+        min-width: 160px; /* Optional: gives a comfortable tap target on phones */
+    }
+}
+
+/* Admin Page Specific Grid Styles */
+#admin-booked-projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    padding: 20px 0;
+}
+
+/* User Card inside Modal */
+.user-profile-badge-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    padding: 12px;
+    border-radius: 8px;
+    margin-top: 8px;
+}
+
+.user-profile-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: #cbd5e1;
+}
+
+.btn-manage-user {
+    background: #2563eb;
+    color: #ffffff;
+    border: none;
+    padding: 6px 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.btn-manage-user:hover {
+    background: #1d4ed8;
+}
+
+/* ==========================================================================
+   FORT GRAPHICS TEMPLATE GALLERY SECTION
+   ========================================================================== */
+
+.fort-templates-section {
+    width: 100%;
+    padding: 32px 16px;
+    box-sizing: border-box;
+}
+
+.templates-section-header {
+    margin-bottom: 24px;
+    text-align: left;
+}
+
+.templates-section-header .section-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 0 0 6px 0;
+}
+
+.templates-section-header .section-subtitle {
+    font-size: 0.9rem;
+    color: #64748b;
+    margin: 0;
+}
+
+/* Grid Layout */
+.templates-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+}
+
+/* Template Card Container */
+.fort-template-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.fort-template-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+}
+
+/* Image Wrapper & Watermark */
+/* Image Wrapper & Watermark */
+.fort-image-container {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    background-color: transparent; /* Removed ash background */
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.fort-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    /* Prevent image dragging and selection */
+    user-select: none;
+    -webkit-user-drag: none;
+    pointer-events: none;
+}
+
+/* Watermark Overlay without dimming dark background */
+.fort-watermark {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent; /* Removed dark background tint */
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.85rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    pointer-events: none;
+    user-select: none;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8), 0 0 2px rgba(0,0,0,0.9);
+    padding: 8px;
+    text-align: center;
+}
+
+/* Expanded Modal Image Container */
+.expanded-template-preview-box {
+    position: relative;
+    width: 100%;
+    max-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #0f172a;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 16px;
+}
+
+.expanded-template-preview-box img {
+    max-width: 100%;
+    max-height: 60vh;
+    object-fit: contain;
+    user-select: none;
+    -webkit-user-drag: none;
+    pointer-events: none;
+}
+
+.expanded-template-preview-box .fort-watermark {
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+}
+
+/* Card Content */
+.fort-card-body {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.fort-template-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #1e293b;
+    margin: 0;
+}
+
+/* Download Button */
+.btn-fort-download {
+    width: 100%;
+    background-color: #09a5db;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-weight: 600;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.btn-fort-download:hover {
+    background-color: #0782ad;
+}
+
+/* Toast Notifications */
+.fort-toast {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 12px 18px;
+    border-radius: 6px;
+    color: #ffffff;
+    font-size: 0.875rem;
+    font-weight: 600;
+    z-index: 10000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+.fort-toast.success { background-color: #3bb75e; }
+.fort-toast.error { background-color: #e53e3e; }
+.fort-toast.info { background-color: #09a5db; }
+
+/* ==========================================================================
+   Label Not Showing For Modals In Phone View
+   ========================================================================== */
+@media (max-width: 768px) {
+    .form-input-container label {
+        display: none !important;
+    }
+}
+
+/* ==========================================================================
+   Borders touching edge
+   ========================================================================== */
+@media (max-width: 768px) {
+    .content-view-port { 
+        padding: 0px !important;
+    }
+    .settings-content-pane { 
+        padding: 0px !important;
+    }
+    .settings-tabs-topbar {
+        padding-top: 10px !important;
+        padding-left: 5px !important;
+    }
+    .settings-control-grid {
+        padding-top: 10px !important;
+    }
+}
+
+/* ==========================================================================
+    Logout Modal Text Hidden & History Modifications
+   ========================================================================== */
+@media (max-width: 768px) {
+    #logout-modal-content p {
+        display: none !important;
+    }
+    .history-header {
+        text-align: center;
+        align-self: center;
+        padding-top: 20px;
+    }
+
+    .history-filter-bar {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    /* Optional: Style a clean, visible horizontal scroll bar track to help direct user focus */
+   .history-filter-bar::-webkit-scrollbar {
+        height: 5px !important;
+    }
+    
+    .history-filter-bar::-webkit-scrollbar-track {
+        background: rgba(0, 0, 0, 0.05) !important;
+        border-radius: 10px !important;
+    }
+    
+    .history-filter-bar::-webkit-scrollbar-thumb {
+        background: var(--fort-blue-light, #3182ce) !important;
+        border-radius: 10px !important;
+    }
 }
 
 /* ==========================================================================
